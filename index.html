@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f7f7f2">
+    <meta name="description" content="健康餐还是放纵餐？看看热量与营养，今天吃什么轻松决定。">
+    <title>今天吃什么？— 每日灵感食谱</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="topbar">
+        <a class="brand" href="#" aria-label="今天吃什么首页">
+          <span class="brand-mark" aria-hidden="true">食</span>
+          <span>好好吃饭<span class="brand-period">.</span></span>
+        </a>
+        <span class="topbar-note"><span class="status-dot"></span> 给今天一点灵感</span>
+      </header>
+
+      <main>
+        <section class="intro" aria-labelledby="page-title">
+          <p class="eyebrow"><span class="eyebrow-line"></span> YOUR DAILY FOOD PICK</p>
+          <h1 id="page-title">今天吃点<span class="title-highlight">什么好？</span></h1>
+          <p class="intro-copy">不必纠结，让一份刚刚好的食谱替你做决定。</p>
+        </section>
+
+        <section class="picker" aria-label="选择用餐时间和餐食类型">
+          <div class="picker-group">
+            <span class="picker-label">今天的哪一餐</span>
+            <div class="segmented" role="group" aria-label="用餐时间">
+              <button class="segment is-active" type="button" data-period="lunch" aria-pressed="true">☀️ 午餐</button>
+              <button class="segment" type="button" data-period="dinner" aria-pressed="false">🌙 晚餐</button>
+            </div>
+          </div>
+          <div class="picker-divider" aria-hidden="true"></div>
+          <div class="picker-group">
+            <span class="picker-label">今天想吃得</span>
+            <div class="segmented food-mood" role="group" aria-label="餐食类型">
+              <button class="segment is-active" type="button" data-type="healthy" aria-pressed="true"><span class="mood-icon">🥗</span> 健康一点</button>
+              <button class="segment" type="button" data-type="treat" aria-pressed="false"><span class="mood-icon">🍔</span> 放纵一下</button>
+            </div>
+          </div>
+        </section>
+        <div class="menu-meta">
+          <span id="menu-count" aria-live="polite">午餐 · 健康餐，5 道菜可选</span>
+          <button class="cafeteria-button" id="cafeteria-button" type="button"><span aria-hidden="true">🍚</span> 食堂自选，帮我随机搭配</button>
+        </div>
+
+        <section class="result-layout" aria-live="polite">
+          <article class="meal-card">
+            <div class="meal-visual" id="meal-visual">
+              <div class="visual-topline">
+                <span class="meal-type-badge" id="meal-badge">清爽健康</span>
+                <span class="meal-time" id="meal-time">午餐灵感 <span aria-hidden="true">↗</span></span>
+              </div>
+              <div class="plate-scene" aria-hidden="true">
+                <span class="sparkle sparkle-one">✦</span>
+                <span class="sparkle sparkle-two">✧</span>
+                <span class="plate-emoji" id="meal-emoji">🥙</span>
+                <span class="plate-shadow"></span>
+              </div>
+              <span class="visual-caption" id="meal-caption">轻盈但满足 · 一人份</span>
+            </div>
+            <div class="meal-content">
+              <div class="meal-heading-row">
+                <div>
+                  <p class="meal-kicker" id="meal-kicker">今天的健康午餐</p>
+                  <h2 id="meal-name">香煎鸡胸藜麦能量碗</h2>
+                </div>
+                <div class="calorie-chip"><strong id="meal-calories">520</strong><span>kcal</span></div>
+              </div>
+              <p class="meal-description" id="meal-description"></p>
+              <div class="tag-list" id="meal-tags"></div>
+              <div class="meal-actions">
+                <button class="primary-button" id="replace-button" type="button">
+                  <span aria-hidden="true">↻</span> 换一道食谱
+                </button>
+                <span class="action-hint">不喜欢这道？再抽一份</span>
+              </div>
+            </div>
+          </article>
+
+          <aside class="nutrition-card" aria-labelledby="nutrition-title">
+            <div class="nutrition-header">
+              <div>
+                <p class="section-kicker">每份营养估算</p>
+                <h2 id="nutrition-title">吃进身体里的</h2>
+              </div>
+              <span class="nutrition-icon" aria-hidden="true">⌁</span>
+            </div>
+            <div class="nutrition-total">
+              <span>总热量</span>
+              <strong><span id="nutrition-calories">520</span><small> kcal</small></strong>
+            </div>
+            <div class="macro-list" id="macro-list"></div>
+            <div class="nutrition-foot">
+              <span class="leaf-icon" aria-hidden="true">✳</span>
+              <p id="nutrition-note">均衡搭配，给身体稳定的能量。</p>
+            </div>
+            <p class="estimate-note">营养数据为食材常见值估算，实际会因品牌、份量与烹饪方式略有差异。</p>
+          </aside>
+        </section>
+
+        <section class="recipe-card" aria-labelledby="recipe-title">
+          <div class="recipe-heading">
+            <div>
+              <p class="section-kicker">COOK SOMETHING GOOD</p>
+              <h2 id="recipe-title">这道菜怎么做 <span class="recipe-sparkle">✳</span></h2>
+            </div>
+            <span class="recipe-time" id="recipe-time">⏱ 约 25 分钟</span>
+          </div>
+          <div class="recipe-body">
+            <div class="ingredients-block">
+              <h3><span class="tiny-icon">01</span> 准备食材 <span class="serving-note">/ 1 人份</span></h3>
+              <ul class="ingredient-list" id="ingredient-list"></ul>
+            </div>
+            <div class="steps-block">
+              <h3><span class="tiny-icon">02</span> 简单做一做</h3>
+              <ol class="step-list" id="step-list"></ol>
+            </div>
+          </div>
+        </section>
+
+        <footer class="page-footer">
+          <span>好好吃饭，也好好照顾自己。</span>
+          <span>所有营养数值均为估算值，仅供日常参考。</span>
+        </footer>
+      </main>
+    </div>
+  </body>
+</html>
